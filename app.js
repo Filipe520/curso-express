@@ -1,23 +1,16 @@
 import express from "express";
-import { Sequelize } from "sequelize";
+import { Produto } from "./models/Produtos.js";
+
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Seja Bem-Vindo ao nosso site! TESTANDO O Nodemon");
-});
-
-app.get("/artigos/:id/:data", (req, res) => {
-  if (req.params.id == "1" && req.params.data == "18-04-2025") {
-    res.send("1 - Como Criar aplicativo Android");
-  } else if (req.params.id == "2") {
-    res.send("2 - Como usar o Node.js \n 3 - Como usar o Express");
-  } else {
-    res.send("Nenhum artigo foi encontrado!");
-  }
-});
-
-app.get("/contato", (req, res) => {
-  res.send("Deixe a sua mensagem");
+app.post("/cadastro", (req, res) => {
+  Produto.create({
+    nome: req.body.nome,
+    preco: req.body.preco,
+    descricao: req.body.descricao,
+  })
+    .then((data) => res.send("Produto cadastrado com sucesso! ✅, ", data))
+    .catch((err) => err.send("Erro ao cadastrar o produto ❌, ", err));
 });
 
 app.listen(3000, console.log("Servidor está rodando 🚀"));
