@@ -12,7 +12,7 @@ sequelize
   .authenticate()
   .then((res) => console.log("Banco de dados conectado com sucesso 🚀 ", res))
   .catch((err) =>
-    console.log("Erro ao se conectar com o Banco de Dados, ", err)
+    console.log("Erro ao se conectar com o Banco de Dados, 😢 ", err)
   );
 
 // Exportadando esse documento para acessar em outras áreas do projeto
