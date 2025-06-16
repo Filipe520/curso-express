@@ -1,5 +1,5 @@
 import express from "express";
-
+import { Sequelize } from "sequelize";
 const app = express();
 
 app.get("/", (req, res) => {
