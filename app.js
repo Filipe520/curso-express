@@ -1,7 +1,12 @@
 import express from "express";
 import { Produto } from "./models/Produtos.js";
+import bodyParser from "body-parser";
 
 const app = express();
+
+// Configurar BodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.post("/cadastro", (req, res) => {
   Produto.create({
