@@ -27,6 +27,15 @@ app.get("/", (req, res) => {
     .catch((err) => res.send("Erro ao buscar os dados ❌", err));
 });
 
+// Pesquisar algo no banco
+app.get("/:nome", (req, res) => {
+  Produto.findAll({ where: { nome: req.params.nome } })
+    .then((produto) => {
+      res.send(produto);
+    })
+    .catch((err) => res.send("Produto não existe na base de dados", err));
+});
+
 // Atualizando o Banco de Dados
 app.patch("/atualizar/:id", (req, res) => {
   Produto.update(
