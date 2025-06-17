@@ -1,1 +1,1 @@
-Qualquer duvida vai nos commits
+Qualquer duvida vai nos commits!
