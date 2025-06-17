@@ -27,4 +27,21 @@ app.get("/", (req, res) => {
     .catch((err) => res.send("Erro ao buscar os dados ❌", err));
 });
 
+// Atualizando o Banco de Dados
+app.patch("/atualizar/:id", (req, res) => {
+  Produto.update(
+    {
+      nome: req.body.nome,
+      preco: req.body.preco,
+      descricao: req.body.descricao,
+    },
+    // só vai atualizar ser id for realmente igual
+    { where: { id: req.params.id } }
+  )
+    .then((data) =>
+      res.send("Sucesso ao atualizar os dados do Produto ✅", data)
+    )
+    .catch((err) => res.send("Erro ao atualizar os dados do produto ❌", err));
+});
+
 app.listen(3000, console.log("Servidor está rodando 🚀"));
