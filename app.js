@@ -44,4 +44,11 @@ app.patch("/atualizar/:id", (req, res) => {
     .catch((err) => res.send("Erro ao atualizar os dados do produto ❌", err));
 });
 
+// Métado DELETE
+app.delete("/deletar/:id", (req, res) => {
+  Produto.destroy({ where: { id: req.params.id } })
+    .then((data) => res.send("Produto DELETADO com sucesso!", data))
+    .catch((err) => res.send("Erro ao DELETAR o produto ❌", err));
+});
+
 app.listen(3000, console.log("Servidor está rodando 🚀"));
